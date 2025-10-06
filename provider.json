@@ -1,0 +1,119 @@
+[
+  {
+    "provider": "Pollinations.ai",
+    "url": "https://text.pollinations.ai/openai",
+    "apiKey": "",
+    "models": [
+      {
+        "name": "GPT-5 Nano",
+        "apiName": "openai-fast",
+        "limit": 5000,
+        "icon": "https://smplai.l5.ca/images/models/openai.png",
+        "description": "Fast & creative. Great for initial prompts.",
+        "details": "Max input: 5000 characters"
+      },
+      {
+        "name": "GPT-5 Mini",
+        "apiName": "openai",
+        "limit": 7000,
+        "icon": "https://smplai.l5.ca/images/models/openai.png",
+        "description": "Powerful & creative. Best for first prompts.",
+        "details": "Max input: 7000 characters"
+      },
+      {
+        "name": "Mistral Small 3.1 24B",
+        "apiName": "mistral",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/mistral.png",
+        "description": "Balanced model. Good for general purpose tasks.",
+        "details": null
+      },
+      {
+        "name": "Qwen 2.5 Coder 32B",
+        "apiName": "qwen-coder",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/qwen.png",
+        "description": "Specialized for code. Excels at complex logic & refinement.",
+        "details": null
+      }
+    ]
+  },
+  {
+    "provider": "Elysia",
+    "url": "https://rkjaxzcyqyfk.us-east-1.clawcloudrun.com/v1/chat/completions",
+    "apiKey": "sk-4r0tOGN6XpXFG6zt5OjIsFPWMEcVdrYm0NuNHrDvZtuWDPwb",
+    "models": [
+      {
+        "name": "GLM-4.6",
+        "apiName": "glm-4.6",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/zhipu.png",
+        "description": "A powerful multilingual model from Zhipu AI.",
+        "details": null
+      },
+      {
+        "name": "GPT-5",
+        "apiName": "gpt-5",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/openai.png",
+        "description": "The next generation powerful model from OpenAI.",
+        "details": null
+      },
+      {
+        "name": "Grok-4",
+        "apiName": "grok-4",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/xai.png",
+        "description": "A powerful model from xAI with real-time knowledge access.",
+        "details": null
+      },
+      {
+        "name": "K2-Think",
+        "apiName": "k2-think",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/anthropic.png",
+        "description": "A powerful and creative model for complex thinking.",
+        "details": null
+              }
+    ]
+  },
+  {
+    "provider": "Elysia",
+    "url": "https://rkjaxzcyqyfk.us-east-1.clawcloudrun.com/v1/chat/completions",
+    "apiKey": "sk-4r0tOGN6XpXFG6zt5OjIsFPWMEcVdrYm0NuNHrDvZtuWDPwb",
+    "models": [
+      {
+        "name": "GLM-4.5",
+        "apiName": "GLM-4.5",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/zhipu.png",
+        "description": "A powerful multilingual model from Zhipu AI.",
+        "details": null
+      },
+      {
+        "name": "GPT-5",
+        "apiName": "gpt-5",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/openai.png",
+        "description": "The next generation powerful model from OpenAI.",
+        "details": null
+      },
+      {
+        "name": "Grok-4",
+        "apiName": "grok-4",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/xai.png",
+        "description": "A powerful model from xAI with real-time knowledge access.",
+        "details": null
+      },
+      {
+        "name": "K2-Think",
+        "apiName": "k2-think",
+        "limit": null,
+        "icon": "https://smplai.l5.ca/images/models/anthropic.png",
+        "description": "A powerful and creative model for complex thinking.",
+        "details": null
+      }
+    ]
+  }
+]
