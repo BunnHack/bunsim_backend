@@ -2,4 +2,3 @@ fastapi
 uvicorn
 requests
 pydantic
-gunicorn  # 添加 gunicorn
