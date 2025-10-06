@@ -15,7 +15,7 @@ class GenerationRequest(BaseModel):
 # Load provider data from the JSON file
 def load_providers():
     # Assuming provider.json is in the parent directory of the backend folder
-    provider_file_path = os.path.join(os.path.dirname(__file__) , 'provider.json')
+    provider_file_path = os.path.join(os.path.dirname(__file__), '..', 'provider.json')
     try:
         with open(provider_file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -78,16 +78,40 @@ async def generate(request_data: GenerationRequest):
 
         def stream_generator():
             try:
-                for chunk in response.iter_content(chunk_size=None): # Yield raw bytes
-                    if chunk:
-                        yield chunk
+                # Use iter_lines to process SSE data correctly
+                for line in response.iter_lines():
+                    if line:
+                        decoded_line = line.decode('utf-8')
+                        # For SSE, the actual data is prefixed with "data: "
+                        if decoded_line.startswith('data: '):
+                            json_str = decoded_line[len('data: '):]
+                            if json_str.strip() == '[DONE]':
+                                continue # OpenAI-compatible signal for end of stream
+                            try:
+                                # Parse the JSON to access the content
+                                data = json.loads(json_str)
+                                choices = data.get('choices', [])
+                                if choices and 'delta' in choices[0] and 'content' in choices[0]['delta']:
+                                    content_chunk = choices[0]['delta']['content']
+                                    if content_chunk:
+                                        # We send back the raw text content to the frontend
+                                        yield content_chunk.encode('utf-8')
+                            except json.JSONDecodeError:
+                                # If it's not JSON, it might be a malformed line or something else.
+                                # We can choose to ignore or log it.
+                                # For our purpose, we'll try to pass it on if it's not a control message.
+                                print(f"Could not decode JSON from line: {json_str}")
+                                pass # Or yield decoded_line.encode('utf-8') if needed
+                        else:
+                             # If a line doesn't start with 'data: ', it might be a comment or empty line in the SSE stream
+                             pass
             except Exception as e:
                 print(f"Error during streaming from provider: {e}")
             finally:
                 response.close()
 
-        # FastAPI's StreamingResponse handles the generator and streams the data back to our frontend
-        return StreamingResponse(stream_generator(), media_type="application/x-ndjson")
+        # We will stream back raw text chunks, not JSON
+        return StreamingResponse(stream_generator(), media_type="text/plain")
 
     except requests.exceptions.RequestException as e:
         print(f"Error calling external API: {e}")
