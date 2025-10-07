@@ -78,42 +78,20 @@ async def generate(request_data: GenerationRequest):
 
         def stream_generator():
             try:
-                # Use iter_lines to process SSE data correctly
+                # Process the stream line by line
                 for line in response.iter_lines():
                     if line:
                         decoded_line = line.decode('utf-8')
-                        # For SSE, the actual data is prefixed with "data: "
+                        # We only care about lines that start with 'data: ', which is standard for SSE
                         if decoded_line.startswith('data: '):
-                            json_str = decoded_line[len('data: '):].strip()
-                            if json_str == '[DONE]':
-                                continue # OpenAI-compatible signal for end of stream
-                            
-                            # Some providers might just send the content directly without JSON wrapping in the stream.
-                            # We will yield the raw chunk and let the frontend parse the full response.
-                            # This simplifies the backend and makes it more provider-agnostic.
+                            # Pass the entire valid SSE line to the frontend, including the 'data: ' prefix
                             yield (decoded_line + '\n\n').encode('utf-8')
-
-                        elif decoded_line: # Handle non-standard streaming formats that might not use 'data:' prefix
-                            try:
-                                # Check if it's a JSON object, if so, process it.
-                                data = json.loads(decoded_line)
-                                choices = data.get('choices', [])
-                                if choices and 'delta' in choices[0] and 'content' in choices[0]['delta']:
-                                    content_chunk = choices[0]['delta']['content']
-                                    if content_chunk:
-                                        # To standardize, wrap it in SSE format for the frontend
-                                        sse_formatted_chunk = f"data: {json.dumps(data)}\n\n"
-                                        yield sse_formatted_chunk.encode('utf-8')
-                            except json.JSONDecodeError:
-                                # It's not JSON, it could be a raw text chunk or a comment.
-                                # Let's just pass it through as-is, as it's not a control message we recognize.
-                                yield (decoded_line + '\n').encode('utf-8')
             except Exception as e:
                 print(f"Error during streaming from provider: {e}")
             finally:
                 response.close()
 
-        # We will stream back raw text chunks, not JSON
+        # The content type for Server-Sent Events (SSE) is text/event-stream
         return StreamingResponse(stream_generator(), media_type="text/event-stream")
 
     except requests.exceptions.RequestException as e:
