@@ -1,4 +1,3 @@
-import os
 import json
 import requests
 from fastapi import FastAPI, HTTPException
@@ -12,17 +11,17 @@ class GenerationRequest(BaseModel):
     modelName: str
     messages: List[Dict[str, Any]]
 
-# Load provider data from the JSON file
+# Load provider data from Pastebin
 def load_providers():
-    # Assuming provider.json is in the parent directory of the backend folder
-    provider_file_path = os.path.join(os.path.dirname(__file__), 'provider.json')
+    url = "https://pastebin.com/raw/wAkCPyER"
     try:
-        with open(provider_file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        raise RuntimeError("provider.json not found. Make sure it's in the project root.")
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        raise RuntimeError(f"Could not fetch provider configuration from Pastebin: {e}")
     except json.JSONDecodeError:
-        raise RuntimeError("Error decoding provider.json.")
+        raise RuntimeError("Failed to decode provider configuration from Pastebin.")
 
 model_providers = load_providers()
 
