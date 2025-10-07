@@ -78,14 +78,11 @@ async def generate(request_data: GenerationRequest):
 
         def stream_generator():
             try:
-                # Process the stream line by line
-                for line in response.iter_lines():
-                    if line:
-                        decoded_line = line.decode('utf-8')
-                        # We only care about lines that start with 'data: ', which is standard for SSE
-                        if decoded_line.startswith('data: '):
-                            # Pass the entire valid SSE line to the frontend, including the 'data: ' prefix
-                            yield (decoded_line + '\n\n').encode('utf-8')
+                # Iterate over the response chunks as they arrive
+                for chunk in response.iter_content(chunk_size=None):
+                    if chunk:
+                        # Forward the raw chunk directly to the client
+                        yield chunk
             except Exception as e:
                 print(f"Error during streaming from provider: {e}")
             finally:
