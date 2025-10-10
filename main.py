@@ -15,7 +15,7 @@ class GenerationRequest(BaseModel):
 # Load provider data from the JSON file
 def load_providers():
     # Assuming provider.json is in the parent directory of the backend folder
-    provider_file_path = os.path.join(os.path.dirname(__file__), 'provider.json')
+    provider_file_path = os.path.join(os.path.dirname(__file__), '..', 'provider.json')
     try:
         with open(provider_file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -48,6 +48,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/api/providers")
+async def get_providers():
+    return model_providers
 
 @app.post("/api/generate")
 async def generate(request_data: GenerationRequest):
