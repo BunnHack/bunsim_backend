@@ -41,7 +41,7 @@
   {
     "provider": "ThatAPI",
     "url": "https://api.aioec.tech/v1/chat/completions",
-    "apiKey": "sk-4r0tOGN6XpXFG6zt5OjIsFPWMEcVdrYm0NuNHrDvZtuWDPwb",
+    "apiKey": "sk-Pyc3StH1bu8RPLR2LNGzAMqSFgCiwwmW6KDg8EsLaIeunB2q",
     "models": [
       {
         "name": "Gemini-2.5-Flash",
