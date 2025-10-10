@@ -39,37 +39,37 @@
     ]
   },
   {
-    "provider": "Elysia",
-    "url": "https://rkjaxzcyqyfk.us-east-1.clawcloudrun.com/v1/chat/completions",
+    "provider": "ThatAPI",
+    "url": "https://api.aioec.tech/v1/chat/completions",
     "apiKey": "sk-4r0tOGN6XpXFG6zt5OjIsFPWMEcVdrYm0NuNHrDvZtuWDPwb",
     "models": [
       {
-        "name": "GLM-4.6",
-        "apiName": "glm-4.6",
+        "name": "Gemini-2.5-Flash",
+        "apiName": "gemini-2.5-flash",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/zhipu.png",
         "description": "A powerful multilingual model from Zhipu AI.",
         "details": null
       },
       {
-        "name": "GPT-5",
-        "apiName": "gpt-5",
+        "name": "Gemini-2.5-Flash-Lite",
+        "apiName": "gemini-2.5-flash-lite-preview-09-2025",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/openai.png",
         "description": "The next generation powerful model from OpenAI.",
         "details": null
       },
       {
-        "name": "Grok-4",
-        "apiName": "grok-4",
+        "name": "GLM-4.6",
+        "apiName": "glm-4.6",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/xai.png",
         "description": "A powerful model from xAI with real-time knowledge access.",
         "details": null
       },
       {
-        "name": "K2-Think",
-        "apiName": "k2-think",
+        "name": "GLM-4.5-Flash",
+        "apiName": "glm-4.5-flash",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/anthropic.png",
         "description": "A powerful and creative model for complex thinking.",
