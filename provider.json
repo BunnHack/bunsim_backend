@@ -40,36 +40,36 @@
   },
   {
     "provider": "ThatAPI",
-    "url": "https://api.aioec.tech/v1/chat/completions",
-    "apiKey": "sk-Pyc3StH1bu8RPLR2LNGzAMqSFgCiwwmW6KDg8EsLaIeunB2q",
+    "url": "https://ollama.com/v1/chat/completions",
+    "apiKey": "8e81f267ba0d4862a7fb62b387b0e398.BuUKo8I5Q5KCMxvqRjc7Qb63",
     "models": [
       {
-        "name": "Gemini-2.5-Flash",
-        "apiName": "gemini-2.5-flash",
+        "name": "GLM-4.6",
+        "apiName": "glm-4.6",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/zhipu.png",
         "description": "A powerful multilingual model from Zhipu AI.",
         "details": null
       },
       {
-        "name": "Gemini-2.5-Flash-Lite",
-        "apiName": "gemini-2.5-flash-lite-preview-09-2025",
+        "name": "Kimi-K2",
+        "apiName": "kimi-k2:1t",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/openai.png",
         "description": "The next generation powerful model from OpenAI.",
         "details": null
       },
       {
-        "name": "GLM-4.6",
-        "apiName": "glm-4.6",
+        "name": "Qwen3-Coder",
+        "apiName": "qwen3-coder:480b",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/xai.png",
         "description": "A powerful model from xAI with real-time knowledge access.",
         "details": null
       },
       {
-        "name": "GLM-4.5-Flash",
-        "apiName": "glm-4.5-flash",
+        "name": "GPT-OSS",
+        "apiName": "gpt-oss:120b",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/anthropic.png",
         "description": "A powerful and creative model for complex thinking.",
