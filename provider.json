@@ -39,9 +39,9 @@
     ]
   },
   {
-    "provider": "ThatAPI",
-    "url": "https://ollama.com/v1/chat/completions",
-    "apiKey": "8e81f267ba0d4862a7fb62b387b0e398.BuUKo8I5Q5KCMxvqRjc7Qb63",
+    "provider": "Elsysia",
+    "url": "https://elysia.h-e.top/v1/chat/completions",
+    "apiKey": "sk-UZaPEaxdbEyQrkKuIQEvR0hKUNtKNywM7hbkl4vr601OlPAO",
     "models": [
       {
         "name": "GLM-4.6",
@@ -83,16 +83,16 @@
     "apiKey": "sk-4r0tOGN6XpXFG6zt5OjIsFPWMEcVdrYm0NuNHrDvZtuWDPwb",
     "models": [
       {
-        "name": "GLM-4.5",
-        "apiName": "GLM-4.5",
+        "name": "GPT-4.1-Mini",
+        "apiName": "gpt-4.1-mini",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/zhipu.png",
         "description": "A powerful multilingual model from Zhipu AI.",
         "details": null
       },
       {
-        "name": "GPT-5",
-        "apiName": "gpt-5",
+        "name": "GLM-4.6",
+        "apiName": "glm-4.6",
         "limit": null,
         "icon": "https://smplai.l5.ca/images/models/openai.png",
         "description": "The next generation powerful model from OpenAI.",
